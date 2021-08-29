@@ -16,6 +16,14 @@ router.get('/', (req,res) => {
     res.render("index", {title:"Inicio", isDataWrong:false})
 })
 
+router.get('/home', (req,res) => {
+    if(currentUser.kindUser == "driver") {
+        res.redirect(`/owner_home`)
+    } else {
+        res.render(`owner_home`, {title:"Dueño", travels:getOwnerVehiclesData()})
+    }
+})
+
 router.get(`/register`, (req, res) => {
     res.render(`register`, {title:"Registro", userExists:false})
 })
