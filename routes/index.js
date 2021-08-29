@@ -66,6 +66,7 @@ router.post(`/add_truck`, (req, res) => {
 
 router.post(`/add_travel`, (req, res) => {
     const {plate, origin, destiny, date, value, gas, toll, maintenance, load, unload} = req.body
+    console.log(req.body)
     if(!validPlate(plate)) {
         addTravel(plate, origin, destiny, date, value, gas, toll, maintenance, load, unload)
         res.redirect(`/driver_home`)
@@ -108,27 +109,42 @@ const getDriverTravels = function() {
     return travelsLoaded
 }
 
+const getCurrencyValue = function(value) {
+    return parseInt(value)
+}
+
 // Add travel
 const addTravel = function(plate, origin, destiny, date, value, gas, toll, maintenance, load, unload) {
+    const valueFormatted = getCurrencyValue(value)
+    const gasFormatted = getCurrencyValue(gas)
+    const tollFormatted = getCurrencyValue(toll)
+    const maintenanceFormatted = getCurrencyValue(maintenance)
+    const loadFormatted = getCurrencyValue(load)
+    const unloadFormatted = getCurrencyValue(unload)
+    console.log(valueFormatted)
     const driverData = vehicles.find( vehicle => vehicle.plate == plate.toUpperCase())
-    const driver = value * (driverData.driverPercentage/100)
-    const expenses = gas + toll + maintenance + load + unload + driver
+    console.log(driverData)
+    const driver = valueFormatted * (driverData.driverPercentage/100)
+    console.log(driver)
+    const expenses = gasFormatted + tollFormatted + maintenanceFormatted + loadFormatted + unloadFormatted + driver
+    console.log(expenses)
     const gain = value - expenses
+    console.log(gain)
     vehicleTravels.push(
         {
             "vehicle": plate.toUpperCase(),
             "date": date.toString(),
             "origin": origin.toUpperCase(),
             "destiny": destiny.toUpperCase(),
-            "value": value.toString(),
+            "value": value,
             "expenses": expenses.toString(),
             "gain": gain.toString(),
             "details": {
-                "gas": gas.toString(),
-                "toll": toll.toString(),
-                "maintenance": maintenance.toString(),
-                "load": load.toString(),
-                "unload": unload.toString(),
+                "gas": gas,
+                "toll": toll,
+                "maintenance": maintenance,
+                "load": load,
+                "unload": unload,
                 "driver": driver.toString()
             }
         }
