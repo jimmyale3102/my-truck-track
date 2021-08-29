@@ -64,12 +64,22 @@ router.post(`/add_truck`, (req, res) => {
     }
 })
 
+router.post(`/add_travel`, (req, res) => {
+    const {plate, origin, destiny, date, value, gas, toll, maintenance, load, unload} = req.body
+    if(validPlate(plate)) {
+        addTravel(plate, origin, destiny, date, value, gas, toll, maintenance, load, unload)
+        res.redirect(`/driver_home`)
+    } else {
+        res.render(`driver_home`, {title:"Conductor", travels:getDriverTravels, isTravelWrong: true})
+    }
+})
+
 router.get(`/owner_home`, (req, res) => {
     res.render(`owner_home`, {title:"Dueño", travels:getOwnerVehiclesData()})
 })
 
 router.get(`/driver_home`, (req, res) => {
-    res.render(`driver_home`, {title:"Conductor", travels:getDriverTravels()})
+    res.render(`driver_home`, {title:"Conductor", travels:getDriverTravels(), isTravelWrong: false})
 })
 
 router.get(`/get_trucks`, (req, res) => {
@@ -96,6 +106,33 @@ const getDriverTravels = function() {
         })
     })
     return travelsLoaded
+}
+
+// Add travel
+const addTravel = function(plate, origin, destiny, date, value, gas, toll, maintenance, load, unload) {
+    const driverData = vehicles.find( vehicle => vehicle.plate == plate.toUpperCase())
+    const driver = value * (driverData.driverPercentage/100)
+    const expenses = gas + toll + maintenance + load + unload + driver
+    const gain = value - expenses
+    vehicleTravels.push(
+        {
+            "vehicle": plate.toUpperCase(),
+            "date": date.toString(),
+            "origin": origin.toUpperCase(),
+            "destiny": destiny.toUpperCase(),
+            "value": value.toString(),
+            "expenses": expenses.toString(),
+            "gain": gain.toString(),
+            "details": {
+                "gas": gas.toString(),
+                "toll": toll.toString(),
+                "maintenance": maintenance.toString(),
+                "load": load.toString(),
+                "unload": unload.toString(),
+                "driver": driver.toString()
+            }
+        }
+    )
 }
 
 // Add truck
