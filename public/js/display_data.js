@@ -28,6 +28,9 @@ function onRowClick(tableId, callback) {
     var trLoad = document.createElement("tr")
     var trUnload = document.createElement("tr")
     var tableBody = document.getElementById("details_body")
+    while(tableBody.hasChildNodes()) {
+        tableBody.removeChild(tableBody.firstChild)
+    }
 
     // Gas
     var tdGas = document.createElement("td")
