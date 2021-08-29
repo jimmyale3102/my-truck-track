@@ -48,7 +48,7 @@ router.get(`/owner_home`, (req, res) => {
 })
 
 router.get(`/get_trucks`, (req, res) => {
-    res.render(`/truck`, {title:"Camiones", travels:getOwnerTrucks()})
+    res.render(`truck`, {title:"Camiones", trucks:getOwnerTrucks()})
 })
 
 router.post(`/add_truck`, (req, res) => {

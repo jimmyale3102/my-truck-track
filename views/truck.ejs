@@ -13,35 +13,23 @@
 
           <div style="margin-top: 5%">
             <div class="card-body">
-              <%if(vehicles.length){%>
+              <%if(trucks.length){%>
                   <table id="travels_table" class="table table-responsive">
                       <thead>
                           <th>Placa</th>
+                          <th>Marca</th>
+                          <th>Modelo</th>
                           <th>Conductor</th>
-                          <th>Fecha</th>
-                          <th>Origen</th>
-                          <th>Destino</th>
-                          <th>Valor</th>
-                          <th>Gastos</th>
-                          <th>Ganancias</th>
+                          <th>Porcentaje conductor</th>
                       </thead>
                       <tbody style="cursor: pointer;">
-                          <% vehicles.forEach(fullTravel => { %>
+                          <% trucks.forEach(truck => { %>
                               <tr class="clickable" data-bs-toggle="modal" data-bs-target="#details">
-                                  <td><%= fullTravel.vehicle.plate %></td>
-                                  <td><%= fullTravel.driverName %></td>
-                                  <td><%= fullTravel.travel.date %></td>
-                                  <td><%= fullTravel.travel.origin %></td>
-                                  <td><%= fullTravel.travel.destiny %></td>
-                                  <td>$<%= fullTravel.travel.value %></td>
-                                  <td>$<%= fullTravel.travel.expenses %></td>
-                                  <td>$<%= fullTravel.travel.gain %></td>
-                                  <td style="display: none;">$<%= fullTravel.travel.details.gas %></td>
-                                  <td style="display: none;">$<%= fullTravel.travel.details.toll %></td>
-                                  <td style="display: none;">$<%= fullTravel.travel.details.maintenance %></td>
-                                  <td style="display: none;">$<%= fullTravel.travel.details.load %></td>
-                                  <td style="display: none;">$<%= fullTravel.travel.details.unload %></td>
-                                  <td style="display: none;">$<%= fullTravel.travel.details.driver %></td>
+                                  <td><%= truck.vehicle.plate %></td>
+                                  <td><%= truck.vehicle.brand %></td>
+                                  <td><%= truck.vehicle.model %></td>
+                                  <td><%= truck.driverName %></td>
+                                  <td><%= truck.vehicle.driverPercentage %></td>
                               </tr>
                           <%})%>
                       </tbody>
