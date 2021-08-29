@@ -60,7 +60,7 @@
             <form class="row g-2 needs-validation" id="truck-form" style="text-align: left;" method="POST" action="/add_truck" onsubmit="return validateTruckForm()" novalidate>
               <div>
                 <label for="plate" class="form-label">Placa</label>
-                <input type="text" class="form-control" name="plate" id="plate" required>
+                <input type="text" class="form-control" name="plate" id="plate" maxlength="7" required>
                 <div class="invalid-feedback">
                   Ingresa una placa
                 </div>
@@ -74,7 +74,7 @@
               </div>
               <div>
                 <label for="model" class="form-label">Modelo</label>
-                <input type="text" class="form-control" name="model" id="model" required>
+                <input type="number" class="form-control" name="model" id="model" maxlength="4" required>
                 <div class="invalid-feedback">
                   Ingresa el modelo
                 </div>
