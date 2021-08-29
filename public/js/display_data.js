@@ -13,7 +13,6 @@ function onRowClick(tableId, callback) {
 
   onRowClick("travels_table", function (row){
     var value = row.getElementsByTagName("td")[5].innerHTML;
-    alert(value)
     var gain = row.getElementsByTagName("td")[7].innerHTML;
     var gas = row.getElementsByTagName("td")[8].innerHTML;
     var toll = row.getElementsByTagName("td")[9].innerHTML;
