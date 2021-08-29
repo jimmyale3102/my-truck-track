@@ -110,7 +110,7 @@ const getDriverTravels = function() {
 
 // Add travel
 const addTravel = function(plate, origin, destiny, date, value, gas, toll, maintenance, load, unload) {
-    const driverData = vehicles.find( vehicle => vehicle.plate == plate)
+    const driverData = vehicles.find( vehicle => vehicle.plate == plate.toUpperCase())
     const driver = value * (driverData.driverPercentage/100)
     const expenses = gas + toll + maintenance + load + unload + driver
     const gain = value - expenses
@@ -151,7 +151,7 @@ const addTruck = function(plate, brand, model, driverUserName, percentage) {
 }
 
 const validPlate = function(plate) {
-    const vehicleLoaded = vehicles.find( vehicle => vehicle.plate == plate)
+    const vehicleLoaded = vehicles.find( vehicle => vehicle.plate == plate.toUpperCase())
     if(vehicleLoaded == undefined) {
         return true
     } else {
