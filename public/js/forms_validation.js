@@ -17,3 +17,11 @@ function validateTruckForm() {
         return false
     }
 }
+
+function validateTravelForm() {
+    const plate = document.forms["new-travel-form"]["plate"].value
+    if(!plateExpression.test(plate)) {
+      alert("La placa debe tener el siguiente formato: XXX-000")
+      return false
+    }
+}

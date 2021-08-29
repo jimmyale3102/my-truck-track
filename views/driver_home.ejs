@@ -91,7 +91,14 @@
           </div>
           <div class="modal-body" style="text-align: left;">
             
-            <form class="row g-2 needs-validation" id="truck-form" style="text-align: left;" method="POST" action="/add_truck" onsubmit="return validateTravelForm()" novalidate>
+            <form class="row g-2 needs-validation" id="new-travel-form" style="text-align: left;" method="POST" action="/add_truck" onsubmit="return validateTravelForm()" novalidate>
+              <div>
+                <label for="plate" class="form-label">Placa</label>
+                <input type="text" class="form-control" name="plate" id="plate" required>
+                <div class="invalid-feedback">
+                  Ingresa la placael origen
+                </div>
+              </div>
               <div>
                 <label for="origin" class="form-label">Origen</label>
                 <input type="text" class="form-control" name="origin" id="origin" required>
