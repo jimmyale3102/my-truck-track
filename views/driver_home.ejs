@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./templates/header')%>
+</head>
+<body style="text-align: center;">
+    <%- include('./templates/full_navbar')%>
+    
+    <div class="row justify-content-center">
+        <h1>Viajes</h1>
+        
+        <div class="col-auto">
+
+          <div style="margin-top: 5%">
+            <div class="card-body">
+              <%if(travels.length){%>
+                  <table id="travels_table" class="table table-responsive">
+                      <thead>
+                          <th>Dueño</th>
+                          <th>Oriegen</th>
+                          <th>Destino</th>
+                          <th>Fecha</th>
+                          <th>Valor</th>
+                          <th>Gastos</th>
+                          <th>Ganancias</th>
+                      </thead>
+                      <tbody style="cursor: pointer;">
+                          <% travels.forEach(fullTravel => { %>
+                              <tr class="clickable" data-bs-toggle="modal" data-bs-target="#details">
+                                  <td><%= fullTravel.vehicle.plate %></td>
+                                  <td><%= fullTravel.driverName %></td>
+                                  <td><%= fullTravel.travel.date %></td>
+                                  <td><%= fullTravel.travel.origin %></td>
+                                  <td><%= fullTravel.travel.destiny %></td>
+                                  <td>$<%= fullTravel.travel.value %></td>
+                                  <td>$<%= fullTravel.travel.expenses %></td>
+                                  <td>$<%= fullTravel.travel.gain %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.gas %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.toll %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.maintenance %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.load %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.unload %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.driver %></td>
+                              </tr>
+                          <%})%>
+                      </tbody>
+                  </table>
+              <%}else{%>
+                  <h5>No hay Registros</h5>
+              <%}%>
+          </div>
+
+        </div>
+
+    </div>
+
+    <!-- Travel Modal -->
+    <div class="modal fade" id="details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"  style="border-radius: 25px;">
+          <div class="modal-header">
+            <h5 class="modal-title"" style="text-align: left;" id="details_title"><strong>Detalle</strong></h5>
+          </div>
+          <div class="modal-body" style="text-align: left;">
+            <h6 id="value"></h6>
+            <h6 id="gain"></h6>
+            <h6 style="text-align: center;"><strong>Gastos</strong></h6>
+            <table class="table table-responsive" style="text-align: center;">
+              <thead>
+                  <th>Motivo</th>
+                  <th>Valor</th>
+              </thead>
+              <tbody id="details_body"></tbody>
+          </table>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="navbar-custom" style="color: white;text-align: center;border-radius: 25px;" data-bs-dismiss="modal" aria-label="Close">Volver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./templates/footer')%>
+</body>
+</html>
