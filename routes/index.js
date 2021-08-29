@@ -47,6 +47,12 @@ router.get(`/owner_home`, (req, res) => {
     res.render(`owner_home`, {title:"Dueño", travels:getOwnerVehiclesData()})
 })
 
+router.post(`/add_truck`, (req, res) => {
+    const {plate, brand, model, driver} = req.body
+    console.log(req.body)
+    res.redirect(`/owner_home`)
+})
+
 // Get owner vehicles data
 const getOwnerVehiclesData = function() {
     let vehicleTravelsLoaded = []
