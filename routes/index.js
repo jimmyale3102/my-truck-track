@@ -55,7 +55,7 @@ router.post(`/add_truck`, (req, res) => {
     const {plate, brand, model, driver, percentage} = req.body
     if(validPlate(plate) && validDriver(driver)) {
         addTruck(plate, brand, model, driver, percentage)
-        redirect(`/get_trucks`)
+        res.redirect(`/get_trucks`)
     } else {
         res.render(`truck`, {title:"Camiones", trucks:getOwnerTrucks(), isTruckWrong: true})
     }
@@ -78,8 +78,8 @@ const addTruck = function(plate, brand, model, driverUserName, percentage) {
     const driverData = driversList.find( driver => driver.username == driverUserName)
     vehicles.push(
         {
-            "plate": plate,
-            "brand": brand,
+            "plate": plate.toUpperCase(),
+            "brand": brand.toUpperCase(),
             "model": model.toString(),
             "owner": currentUser.id,
             "driverPercentage": percentage,
