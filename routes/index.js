@@ -66,12 +66,34 @@ router.get(`/owner_home`, (req, res) => {
 })
 
 router.get(`/driver_home`, (req, res) => {
-    res.render(`driver_home`, {title:"Conductor", travels:getOwnerVehiclesData()})
+    res.render(`driver_home`, {title:"Conductor", travels:getDriverTravels()})
 })
 
 router.get(`/get_trucks`, (req, res) => {
     res.render(`truck`, {title:"Camiones", trucks:getOwnerTrucks(), isTruckWrong: false})
 })
+
+// Get driver travels
+const getDriverTravels = function() {
+    let travelsLoaded = []
+    const vehiclesLoaded = vehicles.filter( function(vehicle, _) {
+        return (vehicle["driver"] == currentUser.id)
+    })
+    vehiclesLoaded.forEach( vehicle => {
+        vehicleTravels.forEach( travel => {
+            if(vehicle.plate == travel.vehicle) {
+                travelsLoaded.push(
+                    {
+                        "vehicle": vehicle,
+                        "travel": travel,
+                        "ownerName": ownersList.find( owner => owner.id == vehicle.owner).username
+                    }
+                )
+            }
+        })
+    })
+    return travelsLoaded
+}
 
 // Add truck
 const addTruck = function(plate, brand, model, driverUserName, percentage) {
