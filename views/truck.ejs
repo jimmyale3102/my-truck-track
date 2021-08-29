@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./templates/header')%>
+</head>
+<body style="text-align: center;">
+    <%- include('./templates/full_navbar')%>
+    
+    <div class="row justify-content-center">
+        <h1>Vehiculos</h1>
+        
+        <div class="col-auto">
+
+          <div style="margin-top: 5%">
+            <div class="card-body">
+              <%if(vehicles.length){%>
+                  <table id="travels_table" class="table table-responsive">
+                      <thead>
+                          <th>Placa</th>
+                          <th>Conductor</th>
+                          <th>Fecha</th>
+                          <th>Origen</th>
+                          <th>Destino</th>
+                          <th>Valor</th>
+                          <th>Gastos</th>
+                          <th>Ganancias</th>
+                      </thead>
+                      <tbody style="cursor: pointer;">
+                          <% vehicles.forEach(fullTravel => { %>
+                              <tr class="clickable" data-bs-toggle="modal" data-bs-target="#details">
+                                  <td><%= fullTravel.vehicle.plate %></td>
+                                  <td><%= fullTravel.driverName %></td>
+                                  <td><%= fullTravel.travel.date %></td>
+                                  <td><%= fullTravel.travel.origin %></td>
+                                  <td><%= fullTravel.travel.destiny %></td>
+                                  <td>$<%= fullTravel.travel.value %></td>
+                                  <td>$<%= fullTravel.travel.expenses %></td>
+                                  <td>$<%= fullTravel.travel.gain %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.gas %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.toll %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.maintenance %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.load %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.unload %></td>
+                                  <td style="display: none;">$<%= fullTravel.travel.details.driver %></td>
+                              </tr>
+                          <%})%>
+                      </tbody>
+                  </table>
+              <%}else{%>
+                  <h5>No hay Registros</h5>
+              <%}%>
+          </div>
+
+        </div>
+
+    </div>
+
+    <!-- Add truck Modal -->
+    <div class="modal fade" id="truck-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"  style="border-radius: 25px;">
+          <div class="modal-header">
+            <h5 class="modal-title"" style="text-align: left;" id="details_title"><strong>Nuevo vehículo</strong></h5>
+          </div>
+          <div class="modal-body" style="text-align: left;">
+          <!-- Placa Mrca Modelo Conductor-->
+            <form class="row g-2 needs-validation" style="text-align: left;" method="POST" action="/add_truck" novalidate>
+              <div>
+                <label for="plate" class="form-label">Placa</label>
+                <input type="text" class="form-control" name="plate" id="plate" required>
+                <div class="invalid-feedback">
+                  Ingresa una placa
+                </div>
+              </div>
+              <div>
+                <label for="brand" class="form-label">Marca</label>
+                <input type="text" class="form-control" name="brand" id="brand" required>
+                <div class="invalid-feedback">
+                  Ingresa la marca
+                </div>
+              </div>
+              <div>
+                <label for="model" class="form-label">Modelo</label>
+                <input type="text" class="form-control" name="model" id="model" required>
+                <div class="invalid-feedback">
+                  Ingresa el modelo
+                </div>
+              </div>
+              <div>
+                <label for="driver" class="form-label">Conductor</label>
+                <input type="text" class="form-control" name="driver" id="driver" required>
+                <div class="invalid-feedback">
+                  Ingresa el conductor
+                </div>
+              </div>
+              <div class="col-12" style="text-align: center;">
+                <button class="btn btn-primary navbar-custom" style="border-radius: 25px;" type="submit">Agregar</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAB -->
+
+    <div class="mainopShadow"></div>
+      <div class="fab"> 
+        <div id="docs" class="minifab op1" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#truck-modal">
+          <svg class="minifabIcon" viewBox="0 0 24 24">
+            <path fill="white" d="M18,18.5A1.5,1.5 0 0,1 16.5,17A1.5,1.5 0 0,1 18,15.5A1.5,1.5 0 0,1 19.5,17A1.5,1.5 0 0,1 18,18.5M19.5,9.5L21.46,12H17V9.5M6,18.5A1.5,1.5 0 0,1 4.5,17A1.5,1.5 0 0,1 6,15.5A1.5,1.5 0 0,1 7.5,17A1.5,1.5 0 0,1 6,18.5M20,8H17V4H3C1.89,4 1,4.89 1,6V17H3A3,3 0 0,0 6,20A3,3 0 0,0 9,17H15A3,3 0 0,0 18,20A3,3 0 0,0 21,17H23V12L20,8Z" />
+          </svg>
+        </div>
+      </div>
+
+    <%- include('./templates/footer')%>
+</body>
+</html>
