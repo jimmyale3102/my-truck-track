@@ -66,7 +66,7 @@ router.post(`/add_truck`, (req, res) => {
 
 router.post(`/add_travel`, (req, res) => {
     const {plate, origin, destiny, date, value, gas, toll, maintenance, load, unload} = req.body
-    if(validPlate(plate)) {
+    if(!validPlate(plate)) {
         addTravel(plate, origin, destiny, date, value, gas, toll, maintenance, load, unload)
         res.redirect(`/driver_home`)
     } else {
@@ -110,7 +110,7 @@ const getDriverTravels = function() {
 
 // Add travel
 const addTravel = function(plate, origin, destiny, date, value, gas, toll, maintenance, load, unload) {
-    const driverData = vehicles.find( vehicle => vehicle.plate == plate.toUpperCase())
+    const driverData = vehicles.find( vehicle => vehicle.plate == plate)
     const driver = value * (driverData.driverPercentage/100)
     const expenses = gas + toll + maintenance + load + unload + driver
     const gain = value - expenses
