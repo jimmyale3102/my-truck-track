@@ -13,13 +13,13 @@ function onRowClick(tableId, callback) {
 
   onRowClick("travels_table", function (row){
     var value = row.getElementsByTagName("td")[5].innerHTML;
+    alert(value)
     var gain = row.getElementsByTagName("td")[7].innerHTML;
     var gas = row.getElementsByTagName("td")[8].innerHTML;
     var toll = row.getElementsByTagName("td")[9].innerHTML;
     var maintenance = row.getElementsByTagName("td")[10].innerHTML;
     var load = row.getElementsByTagName("td")[11].innerHTML;
     var unload = row.getElementsByTagName("td")[12].innerHTML;
-    var driver = row.getElementsByTagName("td")[13].innerHTML;
     document.getElementById('value').innerHTML = "Valor: " +  value;
     document.getElementById('gain').innerHTML = "Ganancias: " +  gain;
     
@@ -28,7 +28,6 @@ function onRowClick(tableId, callback) {
     var trMantenance = document.createElement("tr")
     var trLoad = document.createElement("tr")
     var trUnload = document.createElement("tr")
-    var trDriver = document.createElement("tr")
     var tableBody = document.getElementById("details_body")
 
     // Gas
@@ -70,19 +69,10 @@ function onRowClick(tableId, callback) {
     tdUnloadValue.appendChild(document.createTextNode(unload))
     trUnload.appendChild(tdUnload)
     trUnload.appendChild(tdUnloadValue)
-
-    // Conductor
-    var tdDriver = document.createElement("td")
-    tdDriver.appendChild(document.createTextNode("CONDUCTOR"))
-    var tdDriverValue = document.createElement("td")
-    tdDriverValue.appendChild(document.createTextNode(driver))
-    trDriver.appendChild(tdDriver)
-    trDriver.appendChild(tdDriverValue)
     
     tableBody.appendChild(trGas)
     tableBody.appendChild(trToll)
     tableBody.appendChild(trMantenance)
     tableBody.appendChild(trLoad)
     tableBody.appendChild(trUnload)
-    tableBody.appendChild(trDriver)
   });

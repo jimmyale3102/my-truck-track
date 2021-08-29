@@ -18,9 +18,9 @@ router.get('/', (req,res) => {
 
 router.get('/home', (req,res) => {
     if(currentUser.kindUser == "driver") {
-        res.redirect(`/owner_home`)
+        res.redirect(`/driver_home`)
     } else {
-        res.render(`owner_home`, {title:"Dueño", travels:getOwnerVehiclesData()})
+        res.redirect(`/owner_home`)
     }
 })
 
