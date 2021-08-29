@@ -52,9 +52,13 @@ router.post(`/register`, (req, res) => {
 })
 
 router.post(`/add_truck`, (req, res) => {
-    const {plate, brand, model, driver} = req.body
-    console.log(req.body)
-    res.redirect(`/owner_home`)
+    const {plate, brand, model, driver, percentage} = req.body
+    if(validPlate(plate) && validDriver(driver)) {
+        addTruck(plate, brand, model, driver, percentage)
+        // Add truck
+    } else {
+        //
+    }
 })
 
 router.get(`/owner_home`, (req, res) => {
@@ -68,6 +72,38 @@ router.get(`/get_trucks`, (req, res) => {
 router.get(`/get_drivers`, (req, res) => {
     res.render(`driver`, {title:"Conductores", drivers:getOwnerDrivers()})
 })
+
+// Add truck
+const addTruck(plate, brand, model, driverUserName, percentage) {
+    const driverData = driversList.find( driver => driver.username == driverUserName)
+    vehicles.push(
+        {
+            "plate": plate,
+            "brand": brand,
+            "model": model.toString(),
+            "owner": currentUser.id,
+            "driverPercentage": percentage,
+            "driver": driverData.id
+        }
+    )
+}
+
+const validPlate = function(plate) {
+    const vehicleLoaded = vehicles.find( vehicle => vehicle.plate == plate)
+    if(vehicleLoaded == undefined) {
+        return true
+    } else {
+        return false
+    }
+}
+const validDriver = function(driverUserName) {
+    const driverLoaded = driversList.find( driver => driver.username == driverUserName)
+    if(driverLoaded == undefined) {
+        return false
+    } else {
+        return true
+    }
+}
 
 // Get owner drivers data
 const getOwnerDrivers = function() {
