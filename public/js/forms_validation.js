@@ -18,15 +18,13 @@ function validateTruckForm() {
         alert("Porcentage incorrecto")
         return false
     }
-    if(brand.toString().length() == 0 || model.toString().length() == 0
-    || driver.toString().length() == 0 || percentage.toString().length() == 0) {
+    if(brand === "" || model === "" || driver === "" || percentage === "") {
         alert("Completa la información")
         return false
     }
 }
 
 function validateTravelForm() {
-    (plate, origin, destiny, date, value, gas, toll, maintenance, load, unload)
     const plate = document.forms["new-travel-form"]["plate"].value
     const origin = document.forms["new-travel-form"]["origin"].value
     const destiny = document.forms["new-travel-form"]["destiny"].value
@@ -41,10 +39,8 @@ function validateTravelForm() {
       alert("La placa debe tener el siguiente formato: XXX-000")
       return false
     }
-    
-    if(origin.toString().length() == 0 || destiny.toString().length() == 0 || date.toString().length() == 0
-        || value.toString().length() == 0 || gas.toString().length() == 0 || toll.toString().length() == 0
-        || maintenance.toString().length() == 0 || load.toString().length() == 0 || unload.toString().length() == 0) {
+    if(origin === "" || destiny === "" || date === "" || value === "" || gas === "" || toll === ""
+        || maintenance === "" || load === "" || unload === "") {
             alert("Completa la información")
             return false
     }

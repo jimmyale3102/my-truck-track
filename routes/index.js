@@ -70,7 +70,7 @@ router.post(`/add_travel`, (req, res) => {
         addTravel(plate, origin, destiny, date, value, gas, toll, maintenance, load, unload)
         res.redirect(`/driver_home`)
     } else {
-        res.render(`driver_home`, {title:"Conductor", travels:getDriverTravels, isTravelWrong: true})
+        res.render(`driver_home`, {title:"Conductor", travels:getDriverTravels(), isTravelWrong: true})
     }
 })
 
