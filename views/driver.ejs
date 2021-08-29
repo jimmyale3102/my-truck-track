@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./templates/header')%>
+</head>
+<body style="text-align: center;">
+    <%- include('./templates/full_navbar')%>
+    
+    <div class="row justify-content-center">
+        <h1>Conductores</h1>
+        
+        <div class="col-auto">
+
+          <div style="margin-top: 5%">
+            <div class="card-body">
+              <%if(drivers.length){%>
+                  <table id="travels_table" class="table table-responsive">
+                      <thead>
+                          <th>Nombre</th>
+                          <th>Porcentaje conductor</th>
+                      </thead>
+                      <tbody style="cursor: pointer;">
+                          <% drivers.forEach(driver => { %>
+                              <tr class="clickable" data-bs-toggle="modal" data-bs-target="#details">
+                                  <td><%= driver.driverName %></td>
+                                  <td><%= driver.driverPercentage %></td>
+                              </tr>
+                          <%})%>
+                      </tbody>
+                  </table>
+              <%}else{%>
+                  <h5>No hay Registros</h5>
+              <%}%>
+          </div>
+
+        </div>
+
+    </div>
+
+    <!-- Add driver Modal -->
+    <div class="modal fade" id="driver-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"  style="border-radius: 25px;">
+          <div class="modal-header">
+            <h5 class="modal-title"" style="text-align: left;" id="details_title"><strong>Nuevo conductor</strong></h5>
+          </div>
+          <div class="modal-body" style="text-align: left;">
+          <!-- Placa Mrca Modelo Conductor-->
+            <form class="row g-2 needs-validation" style="text-align: left;" method="POST" action="/add_truck" novalidate>
+              <div>
+                <label for="dirverName" class="form-label">Placa</label>
+                <input type="text" class="form-control" name="driverName" id="driverName" required>
+                <div class="invalid-feedback">
+                  Ingresa nombre
+                </div>
+              </div>
+              <div>
+                <label for="percentage" class="form-label">Marca</label>
+                <input type="text" class="form-control" name="percentage" id="percentage" required>
+                <div class="invalid-feedback">
+                  Ingresa porcentage
+                </div>
+              </div>
+              <div class="col-12" style="text-align: center;">
+                <button class="btn btn-primary navbar-custom" style="border-radius: 25px;" type="submit">Agregar</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAB -->
+
+    <div class="mainopShadow"></div>
+      <div class="fab"> 
+        <div id="docs" class="minifab op1" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#driver-modal">
+          <svg class="minifabIcon" viewBox="0 0 24 24">
+            <path fill="white" d="M18,18.5A1.5,1.5 0 0,1 16.5,17A1.5,1.5 0 0,1 18,15.5A1.5,1.5 0 0,1 19.5,17A1.5,1.5 0 0,1 18,18.5M19.5,9.5L21.46,12H17V9.5M6,18.5A1.5,1.5 0 0,1 4.5,17A1.5,1.5 0 0,1 6,15.5A1.5,1.5 0 0,1 7.5,17A1.5,1.5 0 0,1 6,18.5M20,8H17V4H3C1.89,4 1,4.89 1,6V17H3A3,3 0 0,0 6,20A3,3 0 0,0 9,17H15A3,3 0 0,0 18,20A3,3 0 0,0 21,17H23V12L20,8Z" />
+          </svg>
+        </div>
+      </div>
+
+    <%- include('./templates/footer')%>
+</body>
+</html>
