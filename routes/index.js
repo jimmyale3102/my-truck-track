@@ -20,8 +20,10 @@ router.get('/home', (req,res) => {
     console.log(currentUser)
     if(currentUser.kindUser == "driver") {
         res.redirect(`/driver_home`)
-    } else {
+    } else if(currentUser.kindUser == "owner") {
         res.redirect(`/owner_home`)
+    } else {
+        res.redirect(`/`)
     }
 })
 
