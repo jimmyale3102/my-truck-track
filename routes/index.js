@@ -17,6 +17,7 @@ router.get('/', (req,res) => {
 })
 
 router.get('/home', (req,res) => {
+    console.log(currentUser)
     if(currentUser.kindUser == "driver") {
         res.redirect(`/driver_home`)
     } else {

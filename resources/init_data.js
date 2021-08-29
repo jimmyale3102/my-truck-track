@@ -2,7 +2,8 @@ let driversList = [
     {
         "id": 1,
         "username": "jimmy",
-        "password": 123
+        "password": 123,
+        "kindUser": "driver"
     }
 ]
 
@@ -10,7 +11,8 @@ let ownersList = [
     {
         "id": 1,
         "username": "alejo",
-        "password": 123
+        "password": 123,
+        "kindUser": "owner"
     }
 ]
 let currentUser = {
