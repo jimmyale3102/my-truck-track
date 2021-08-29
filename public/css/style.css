@@ -19,7 +19,7 @@ body {
   transition-timing-function: ease;*/
   position: absolute;
   right: 50px;
-  bottom: 10px;
+  bottom: 1px;
   text-align: center;
   overflow: hidden;
 }
@@ -67,7 +67,6 @@ body {
   height: 48px;
   border-radius: 24px;
   z-index: 5;
-  margin-bottom: 8px;
   margin-right: 8px;
   background-color: blue;
   transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
