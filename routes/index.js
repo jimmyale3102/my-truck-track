@@ -54,6 +54,12 @@ router.post(`/register`, (req, res) => {
     }
 })
 
+router.post(`/remove_truck`, (req, res) => {
+    const {truck_plate} = req.body
+    removeTruck(truck_plate)
+    res.redirect(`/get_trucks`)
+})
+
 router.post(`/add_truck`, (req, res) => {
     const {plate, brand, model, driver, percentage} = req.body
     if(validPlate(plate) && validDriver(driver)) {
@@ -86,6 +92,15 @@ router.get(`/driver_home`, (req, res) => {
 router.get(`/get_trucks`, (req, res) => {
     res.render(`truck`, {title:"Camiones", trucks:getOwnerTrucks(), isTruckWrong: false})
 })
+
+// Remove
+const removeTruck = function(truckPlate) {
+    const vehicleLoaded = vehicles.filter( function(vehicle, _) {
+        return (vehicle["plate"] == truckPlate)
+    })
+    const vehicleIndex = vehicles.indexOf(vehicleLoaded)
+    vehicles.splice(vehicleIndex,  1)
+}
 
 // Get driver travels
 const getDriverTravels = function() {
@@ -121,15 +136,10 @@ const addTravel = function(plate, origin, destiny, date, value, gas, toll, maint
     const maintenanceFormatted = getCurrencyValue(maintenance)
     const loadFormatted = getCurrencyValue(load)
     const unloadFormatted = getCurrencyValue(unload)
-    console.log(valueFormatted)
     const driverData = vehicles.find( vehicle => vehicle.plate == plate.toUpperCase())
-    console.log(driverData)
     const driver = valueFormatted * (driverData.driverPercentage/100)
-    console.log(driver)
     const expenses = gasFormatted + tollFormatted + maintenanceFormatted + loadFormatted + unloadFormatted + driver
-    console.log(expenses)
     const gain = value - expenses
-    console.log(gain)
     vehicleTravels.push(
         {
             "vehicle": plate.toUpperCase(),

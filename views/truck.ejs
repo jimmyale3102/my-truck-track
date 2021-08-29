@@ -113,14 +113,16 @@
             <h5 class="modal-title"" style="text-align: left;" id="details_title"><strong>Eliminar camión</strong></h5>
           </div>
           <div class="modal-body" style="text-align: left;">
-            <h6>¿Desea eliminar el camión?</h6>
-            <h5 id="truck_plate"></h5>
-            <div class="row">
-              <div style="text-align: center;">
-                <button type="button" style="background-color: white;color: #1c2c48;text-align: center;border-radius: 25px; width: 100px;" data-bs-dismiss="modal" aria-label="Close">No</button>
-                <button type="button" class="navbar-custom" style="color: white;text-align: center;border-radius: 25px;width: 100px;" >Si</button>
+            <form class="row g-2 needs-validation" style="text-align: left;" method="POST" action="/remove_truck">
+              <h6>¿Desea eliminar el camión?</h6>
+              <h5 name="truck_plate" id="truck_plate"></h5>
+              <div class="row">
+                <div style="text-align: center;">
+                  <button type="button" style="background-color: white;color: #1c2c48;text-align: center;border-radius: 25px; width: 100px;" data-bs-dismiss="modal" aria-label="Close">No</button>
+                  <button type="submit" class="navbar-custom" style="color: white;text-align: center;border-radius: 25px;width: 100px;" >Si</button>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
