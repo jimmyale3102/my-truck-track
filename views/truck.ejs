@@ -62,7 +62,7 @@
             <form class="row g-2 needs-validation" id="truck-form" style="text-align: left;" method="POST" action="/add_truck" onsubmit="return validateTruckForm()" novalidate>
               <div>
                 <label for="plate" class="form-label">Placa</label>
-                <input type="text" class="form-control" name="plate" id="plate" maxlength="7" required>
+                <input type="text" class="form-control" name="plate" id="plate" maxlength="7" placeholder="XXX-000" required>
                 <div class="invalid-feedback">
                   Ingresa una placa
                 </div>
@@ -76,7 +76,7 @@
               </div>
               <div>
                 <label for="model" class="form-label">Modelo</label>
-                <input type="number" class="form-control" name="model" id="model" maxlength="4" required>
+                <input type="number" class="form-control" name="model" id="model" placeholder="2015" maxlength="4" required>
                 <div class="invalid-feedback">
                   Ingresa el modelo
                 </div>
@@ -90,7 +90,7 @@
               </div>
               <div>
                 <label for="percentage" class="form-label">Porcentage</label>
-                <input type="number" class="form-control" name="percentage" id="percentage" maxlength="2" required>
+                <input type="number" class="form-control" name="percentage" id="percentage" placeholder="10" maxlength="2" required>
                 <div class="invalid-feedback">
                   Ingresa el porcentage
                 </div>
