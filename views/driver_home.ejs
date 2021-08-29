@@ -91,9 +91,80 @@
           </div>
           <div class="modal-body" style="text-align: left;">
             
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="navbar-custom" style="color: white;text-align: center;border-radius: 25px;" data-bs-dismiss="modal" aria-label="Close">Volver</button>
+            <form class="row g-2 needs-validation" id="truck-form" style="text-align: left;" method="POST" action="/add_truck" onsubmit="return validateTravelForm()" novalidate>
+              <div>
+                <label for="origin" class="form-label">Origen</label>
+                <input type="text" class="form-control" name="origin" id="origin" required>
+                <div class="invalid-feedback">
+                  Ingresa el origen
+                </div>
+              </div>
+              <div>
+                <label for="destiny" class="form-label">Destino</label>
+                <input type="text" class="form-control" name="destiny" id="destiny" required>
+                <div class="invalid-feedback">
+                  Ingresa el destino
+                </div>
+              </div>
+              <div>
+                <label for="date" class="form-label">Fecha</label>
+                <input type="date" class="form-control" name="date" id="date" required>
+                <div class="invalid-feedback">
+                  Ingresa la fecha
+                </div>
+              </div>
+              <div>
+                <label for="value" class="form-label">Valor del viaje</label>
+                <input type="text" class="form-control" name="value" id="value" required>
+                <div class="invalid-feedback">
+                  Ingresa el valor del viaje
+                </div>
+              </div>
+              <h6 style="text-align: left;"><strong>Gastos</strong></h6>
+              <div>
+                <label for="gas" class="form-label">ACPM</label>
+                <input type="number" class="form-control" name="gas" id="gas" required>
+                <div class="invalid-feedback">
+                  Ingresa el gasto en ACPM
+                </div>
+              </div>
+              <div>
+                <label for="toll" class="form-label">Peaje</label>
+                <input type="number" class="form-control" name="toll" id="toll" required>
+                <div class="invalid-feedback">
+                  Ingresa el gasto en peajes
+                </div>
+              </div>
+              <div>
+                <label for="maintenance" class="form-label">Mantenimiento</label>
+                <input type="number" class="form-control" name="maintenance" id="maintenance" required>
+                <div class="invalid-feedback">
+                  Ingresa el gasto en mantenimiento
+                </div>
+              </div>
+              <div>
+                <label for="load" class="form-label">Cargue</label>
+                <input type="number" class="form-control" name="load" id="load" required>
+                <div class="invalid-feedback">
+                  Ingresa el gasto en cargue
+                </div>
+              </div>
+              <div>
+                <label for="unload" class="form-label">Descargue</label>
+                <input type="number" class="form-control" name="unload" id="unload" required>
+                <div class="invalid-feedback">
+                  Ingresa el gasto en descargue
+                </div>
+              </div>
+              <div class="col-12" style="text-align: center;">
+                <button class="btn btn-primary navbar-custom" style="border-radius: 25px;" type="submit">Agregar</button>
+              </div>
+            </form>
+            
+            <div class="col-12" style="text-align: center;">
+              <button class="btn btn-primary navbar-custom" style="border-radius: 25px;" type="submit">Agregar</button>
+            </div>
+
           </div>
         </div>
       </div>
