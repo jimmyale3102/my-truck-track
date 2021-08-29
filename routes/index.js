@@ -62,7 +62,7 @@ router.post(`/add_truck`, (req, res) => {
 })
 
 // Get owner drivers data
-const getOwnerTrucks = function() {
+const getOwnerDrivers = function() {
     let driversLoaded = []
     console.log("GetOwnerVehicles")
     const vehiclesLoaded = vehicles.filter( function(vehicle, _) {
