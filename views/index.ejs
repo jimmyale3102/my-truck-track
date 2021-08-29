@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./templates/header')%>
+</head>
+<body style="text-align: center">
+    <%- include('./templates/navbar')%>
+    
+    <div class="col-4 offset-4">
+        <h1>Bienvenido</h1>
+        <div style="margin-top: 10%">
+            <div class="card secondary-background" style="border-radius: 25px;">
+                <div class="card-body">
+                    <h4>Ingresa como</h4>
+                    <%if(isDataWrong){%>
+                      <h6 style="color: red;">Usuario o contraseña incorrectos</h6>
+                    <%}%>
+                    <form class="row g-2 needs-validation" style="text-align: left;" method="POST" action="/" novalidate>
+                        <div>
+                          <label for="username" class="form-label">Usuario</label>
+                          <input type="text" class="form-control" name="username" id="username" required>
+                          <div class="invalid-feedback">
+                            Ingresa tus usuario
+                          </div>
+                        </div>
+                        <div>
+                          <label for="password" class="form-label">Contraseña</label>
+                          <input type="password" class="form-control" name="password" id="password" required>
+                          <div class="invalid-feedback">
+                            Ingresa tu contraseña
+                          </div>
+                        </div>
+                        <fieldset>
+                            <legend class="col-form-label col-sm-2 pt-0">Usuario</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="kindUser" value="driver">
+                                    <label class="form-check-label" for="kind_user">
+                                        Conductor
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="kindUser" value="owner" checked>
+                                    <label class="form-check-label" for="kind_user">
+                                        Dueño
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-12" style="text-align: center;">
+                          <button class="btn btn-primary navbar-custom" style="border-radius: 25px;" type="submit">Ingresar</button>
+                        </div>
+                      </form>
+                      <a href="/register">Si no tienes una cuenta registrate aquí</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./templates/footer')%>
+</body>
+</html>
