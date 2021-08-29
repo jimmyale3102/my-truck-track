@@ -51,6 +51,12 @@ router.post(`/register`, (req, res) => {
     }
 })
 
+router.post(`/add_truck`, (req, res) => {
+    const {plate, brand, model, driver} = req.body
+    console.log(req.body)
+    res.redirect(`/owner_home`)
+})
+
 router.get(`/owner_home`, (req, res) => {
     res.render(`owner_home`, {title:"Dueño", travels:getOwnerVehiclesData()})
 })
@@ -61,12 +67,6 @@ router.get(`/get_trucks`, (req, res) => {
 
 router.get(`/get_drivers`, (req, res) => {
     res.render(`driver`, {title:"Conductores", drivers:getOwnerDrivers()})
-})
-
-router.post(`/add_truck`, (req, res) => {
-    const {plate, brand, model, driver} = req.body
-    console.log(req.body)
-    res.redirect(`/owner_home`)
 })
 
 // Get owner drivers data

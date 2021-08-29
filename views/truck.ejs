@@ -57,7 +57,7 @@
           </div>
           <div class="modal-body" style="text-align: left;">
           <!-- Placa Mrca Modelo Conductor-->
-            <form class="row g-2 needs-validation" style="text-align: left;" method="POST" action="/add_truck" novalidate>
+            <form class="row g-2 needs-validation" id="truck-form" style="text-align: left;" method="POST" action="/add_truck" onsubmit="return validateTruckForm()" novalidate>
               <div>
                 <label for="plate" class="form-label">Placa</label>
                 <input type="text" class="form-control" name="plate" id="plate" required>
