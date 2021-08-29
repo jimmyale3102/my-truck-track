@@ -55,9 +55,9 @@ router.post(`/add_truck`, (req, res) => {
     const {plate, brand, model, driver, percentage} = req.body
     if(validPlate(plate) && validDriver(driver)) {
         addTruck(plate, brand, model, driver, percentage)
-        // Add truck
+        redirect(`/get_trucks`)
     } else {
-        //
+        res.render(`truck`, {title:"Camiones", trucks:getOwnerTrucks(), isTruckWrong: true})
     }
 })
 
@@ -66,7 +66,7 @@ router.get(`/owner_home`, (req, res) => {
 })
 
 router.get(`/get_trucks`, (req, res) => {
-    res.render(`truck`, {title:"Camiones", trucks:getOwnerTrucks()})
+    res.render(`truck`, {title:"Camiones", trucks:getOwnerTrucks(), isTruckWrong: false})
 })
 
 router.get(`/get_drivers`, (req, res) => {
