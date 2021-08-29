@@ -74,7 +74,7 @@ router.get(`/get_drivers`, (req, res) => {
 })
 
 // Add truck
-const addTruck(plate, brand, model, driverUserName, percentage) {
+const addTruck = function(plate, brand, model, driverUserName, percentage) {
     const driverData = driversList.find( driver => driver.username == driverUserName)
     vehicles.push(
         {
