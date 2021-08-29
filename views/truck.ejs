@@ -16,7 +16,7 @@
           <div style="margin-top: 5%">
             <div class="card-body">
               <%if(trucks.length){%>
-                  <table id="travels_table" class="table table-responsive">
+                  <table id="trucks_table" class="table table-responsive">
                       <thead>
                           <th>Placa</th>
                           <th>Marca</th>
@@ -26,7 +26,7 @@
                       </thead>
                       <tbody style="cursor: pointer;">
                           <% trucks.forEach(truck => { %>
-                              <tr class="clickable" data-bs-toggle="modal" data-bs-target="#details">
+                              <tr class="clickable" data-bs-toggle="modal" data-bs-target="#remove-truck-modal">
                                   <td><%= truck.vehicle.plate %></td>
                                   <td><%= truck.vehicle.brand %></td>
                                   <td><%= truck.vehicle.model %></td>
@@ -100,6 +100,27 @@
               </div>
             </form>
 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Remove truck Modal -->
+    <div class="modal fade" id="remove-truck-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"  style="border-radius: 25px;">
+          <div class="modal-header">
+            <h5 class="modal-title"" style="text-align: left;" id="details_title"><strong>Eliminar camión</strong></h5>
+          </div>
+          <div class="modal-body" style="text-align: left;">
+            <h6>¿Desea eliminar el camión?</h6>
+            <h5 id="truck_plate"></h5>
+            <div class="row">
+              <div style="text-align: center;">
+                <button type="button" style="background-color: white;color: #1c2c48;text-align: center;border-radius: 25px; width: 100px;" data-bs-dismiss="modal" aria-label="Close">No</button>
+                <button type="button" class="navbar-custom" style="color: white;text-align: center;border-radius: 25px;width: 100px;" >Si</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
