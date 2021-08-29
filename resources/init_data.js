@@ -36,7 +36,7 @@ let vehicles = [
 let vehicleTravels = [
     {
         "vehicle": "ABC-123",
-        "date": "01/08/2021",
+        "date": "2021-08-01",
         "origin": "SOGAMOSO",
         "destiny": "BOGOTÁ",
         "value": "2500000",
@@ -49,6 +49,23 @@ let vehicleTravels = [
             "load": "150000",
             "unload": "100000",
             "driver": "250000"
+        }
+    },
+    {
+        "vehicle": "ABC-123",
+        "date": "2021-08-01",
+        "origin": "SOGAMOSO",
+        "destiny": "BARRANQUILLA",
+        "value": "4000000",
+        "expenses": "1700000",
+        "gain": "2300000",
+        "details": {
+            "gas": "600000",
+            "toll": "500000",
+            "maintenance": "100000",
+            "load": "50000",
+            "unload": "50000",
+            "driver": "400000"
         }
     }
 ]
