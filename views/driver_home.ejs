@@ -16,6 +16,7 @@
               <%if(travels.length){%>
                   <table id="travels_table" class="table table-responsive">
                       <thead>
+                          <th>Placa</th>
                           <th>Dueño</th>
                           <th>Oriegen</th>
                           <th>Destino</th>
@@ -28,19 +29,18 @@
                           <% travels.forEach(fullTravel => { %>
                               <tr class="clickable" data-bs-toggle="modal" data-bs-target="#details">
                                   <td><%= fullTravel.vehicle.plate %></td>
-                                  <td><%= fullTravel.driverName %></td>
-                                  <td><%= fullTravel.travel.date %></td>
+                                  <td><%= fullTravel.ownerName %></td>
                                   <td><%= fullTravel.travel.origin %></td>
                                   <td><%= fullTravel.travel.destiny %></td>
+                                  <td><%= fullTravel.travel.date %></td>
                                   <td>$<%= fullTravel.travel.value %></td>
                                   <td>$<%= fullTravel.travel.expenses %></td>
-                                  <td>$<%= fullTravel.travel.gain %></td>
+                                  <td>$<%= fullTravel.travel.details.driver %></td>
                                   <td style="display: none;">$<%= fullTravel.travel.details.gas %></td>
                                   <td style="display: none;">$<%= fullTravel.travel.details.toll %></td>
                                   <td style="display: none;">$<%= fullTravel.travel.details.maintenance %></td>
                                   <td style="display: none;">$<%= fullTravel.travel.details.load %></td>
                                   <td style="display: none;">$<%= fullTravel.travel.details.unload %></td>
-                                  <td style="display: none;">$<%= fullTravel.travel.details.driver %></td>
                               </tr>
                           <%})%>
                       </tbody>
