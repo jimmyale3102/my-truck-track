@@ -33,7 +33,7 @@ router.post(`/`, (req, res) => {
     const {username, password, kindUser} = req.body
     if(validateUserData(username, password, kindUser)) {
         if(kindUser === "driver") {
-            res.render(`index`, {title:"Inicio", isDataWrong:false})
+            res.redirect(`/driver_home`)
         } else {
             res.redirect(`/owner_home`)
         }
@@ -63,6 +63,10 @@ router.post(`/add_truck`, (req, res) => {
 
 router.get(`/owner_home`, (req, res) => {
     res.render(`owner_home`, {title:"Dueño", travels:getOwnerVehiclesData()})
+})
+
+router.get(`/driver_home`, (req, res) => {
+    res.render(`driver_home`, {title:"Conductor", travels:getOwnerVehiclesData()})
 })
 
 router.get(`/get_trucks`, (req, res) => {
